@@ -1,8 +1,8 @@
 
 package com.vi.comun.controller;
 
+import com.vi.comun.locator.ParameterLocator;
 import com.vi.util.FacesUtil;
-import com.vi.comun.locator.ServiceLocator;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Calendar;
@@ -18,7 +18,7 @@ import org.primefaces.model.StreamedContent;
 @ManagedBean(name="logController")
 @SessionScoped
 public class LogController {
-    ServiceLocator locator;
+    ParameterLocator locator;
     private StreamedContent file;
     private boolean renderDownload = false;
     private String rutaArchivo;
@@ -28,7 +28,7 @@ public class LogController {
         Calendar calendario = Calendar.getInstance();
         String ano = String.format("%04d",calendario.get(Calendar.YEAR));
         String mes = String.format("%02d",calendario.get(Calendar.MONTH));
-        locator = ServiceLocator.getInstance();
+        locator = ParameterLocator.getInstance();
         rutaArchivo = locator.getParameter("rutaLog")+File.separator+"VI_"+ano+mes+".log";
         if(!(new File(rutaArchivo).exists())){
             FacesUtil.addMessage(FacesUtil.ERROR, " No existe el log VI_"+ano+mes+".log");

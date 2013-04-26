@@ -3,8 +3,8 @@ package com.vi.usuarios.controller;
 import com.vi.util.FacesUtil;
 import com.vi.util.SpringUtils;
 import com.vi.comun.exceptions.LlaveDuplicadaException;
-import com.vi.comun.locator.ServiceLocator;
 import com.vi.comun.util.Log;
+import com.vi.locator.ComboLocator;
 import com.vi.usuarios.dominio.Groups;
 import com.vi.usuarios.dominio.Users;
 import com.vi.usuarios.services.GruposServicesLocal;
@@ -24,7 +24,7 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name="usuariosController")
 @RequestScoped
 public class UsuariosController {
-    ServiceLocator locator;
+    ComboLocator locator;
     private Users usuario;
     private String busqueda;
     private List<Users> usuarios;
@@ -43,7 +43,7 @@ public class UsuariosController {
     public void init(){
         setUsuario(new Users());
         usuario.setPwd("");
-        locator = ServiceLocator.getInstance();
+        locator = ComboLocator.getInstance();
         setGrupos(gruposServices.findAll());
         if(usuarios == null){
             setUsuarios(usersServices.findAll());

@@ -1,7 +1,7 @@
 package com.vi.usuarios.controller;
 
 import com.vi.util.FacesUtil;
-import com.vi.comun.locator.ServiceLocator;
+import com.vi.locator.ComboLocator;
 import com.vi.usuarios.dominio.Groups;
 import com.vi.usuarios.dominio.Users;
 import com.vi.usuarios.services.UsuariosServicesLocal;
@@ -23,7 +23,7 @@ import org.springframework.security.core.GrantedAuthority;
 @ManagedBean(name="sessionController")
 @SessionScoped
 public class SessionController {
-    ServiceLocator locator;
+    ComboLocator locator;
     private MenuModel model;
     private Users usuario;
     @EJB
@@ -40,7 +40,7 @@ public class SessionController {
     @PostConstruct
     public void init(){
         System.out.println("Iniciando session");
-        locator = ServiceLocator.getInstance();
+        locator = ComboLocator.getInstance();
         principal = (UsernamePasswordAuthenticationToken)FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
 
         grantedAuthorities = principal.getAuthorities();

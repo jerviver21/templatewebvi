@@ -7,8 +7,8 @@ package com.vi.usuarios.controller;
 import com.vi.comun.controller.GeneralController;
 import com.vi.util.FacesUtil;
 import com.vi.comun.exceptions.LlaveDuplicadaException;
-import com.vi.comun.locator.ServiceLocator;
 import com.vi.comun.util.Log;
+import com.vi.locator.ComboLocator;
 import com.vi.usuarios.dominio.Menu;
 import com.vi.usuarios.dominio.Resource;
 import com.vi.usuarios.services.ResourcesServicesLocal;
@@ -27,7 +27,7 @@ import javax.faces.model.SelectItem;
 @RequestScoped
 public class RecursosController {
 
-    private ServiceLocator locator;//Sirve de Cache
+    private ComboLocator locator;//Sirve de Cache
 
     private Resource recurso;
     private List<Resource> recursos;
@@ -42,11 +42,11 @@ public class RecursosController {
     public void init(){
         setRecurso(new Resource());
         getRecurso().setMenu(new Menu(1l));
-        locator = ServiceLocator.getInstance();
+        locator = ComboLocator.getInstance();
         GeneralController controller = (GeneralController)FacesUtil.getManagedBean("#{generalController}");
         setRecursos(recursoService.findAll(controller.getLocale()));
-        setMenus(FacesUtil.getSelectsItem(locator.getDataForCombo(ServiceLocator.COMB_ID_MENU)));
-        setIdiomas(FacesUtil.getSelectsItem(locator.getDataForCombo(ServiceLocator.COMB_ID_IDIOMA)));
+        setMenus(FacesUtil.getSelectsItem(locator.getDataForCombo(ComboLocator.COMB_ID_MENU)));
+        setIdiomas(FacesUtil.getSelectsItem(locator.getDataForCombo(ComboLocator.COMB_ID_IDIOMA)));
         
         System.out.println("En el inicio: "+getRecurso().getId());
     }

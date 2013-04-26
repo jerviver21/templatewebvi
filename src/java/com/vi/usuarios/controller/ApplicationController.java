@@ -1,7 +1,7 @@
 
 package com.vi.usuarios.controller;
 
-import com.vi.comun.locator.ServiceLocator;
+import com.vi.comun.locator.ParameterLocator;
 import com.vi.comun.services.CommonServicesLocal;
 import java.util.Map;
 import java.util.TreeMap;
@@ -17,7 +17,7 @@ import javax.faces.event.ValueChangeEvent;
 @ManagedBean(name="applicationController" ,eager=true)
 @ApplicationScoped
 public class ApplicationController {
-    ServiceLocator locator;
+    ParameterLocator locator;
     
     //Roles que condicionan los componentes de la vista
     private String ROL_MASTER;
@@ -37,7 +37,7 @@ public class ApplicationController {
 
     @PostConstruct
     public void init(){
-        locator = ServiceLocator.getInstance();
+        locator = ParameterLocator.getInstance();
         System.out.println("--> Iniciando application controller <--");
         commonServices.updateEstructuraMenus();
 

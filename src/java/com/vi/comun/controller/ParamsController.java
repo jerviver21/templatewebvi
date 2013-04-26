@@ -4,9 +4,9 @@ package com.vi.comun.controller;
 import com.vi.util.FacesUtil;
 import com.vi.comun.dominio.Parametro;
 import com.vi.comun.exceptions.LlaveDuplicadaException;
-import com.vi.comun.locator.ServiceLocator;
 import com.vi.comun.services.ParamsServicesLocal;
 import com.vi.comun.util.Log;
+import com.vi.locator.ComboLocator;
 
 import java.util.List;
 import java.util.Map;
@@ -28,14 +28,14 @@ public class ParamsController {
     private Parametro parametro;
     private List<Parametro> parametros;
     private Map contexto;
-    ServiceLocator locator;
+    ComboLocator locator;
 
     @PostConstruct
     public void init(){
-        locator = ServiceLocator.getInstance();
+        locator = ComboLocator.getInstance();
         setParametro(new Parametro());
         setParametros(paramService.findAll());
-        setContexto(locator.getDataForCombo(ServiceLocator.PARAMETROS));
+        setContexto(locator.getDataForCombo(ComboLocator.PARAMETROS));
     }
 
     public String create(){
@@ -73,7 +73,7 @@ public class ParamsController {
 
     public String recargarContexto(){
         locator.restartCache();
-        contexto = locator.getDataForCombo(ServiceLocator.PARAMETROS);
+        contexto = locator.getDataForCombo(ComboLocator.PARAMETROS);
         return null;
     }
 

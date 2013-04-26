@@ -3,8 +3,8 @@ package com.vi.usuarios.controller;
 import com.vi.comun.controller.GeneralController;
 import com.vi.util.FacesUtil;
 import com.vi.comun.exceptions.LlaveDuplicadaException;
-import com.vi.comun.locator.ServiceLocator;
 import com.vi.comun.util.Log;
+import com.vi.locator.ComboLocator;
 import com.vi.usuarios.dominio.Menu;
 import com.vi.usuarios.services.MenusServicesLocal;
 import java.util.List;
@@ -22,7 +22,7 @@ import javax.faces.model.SelectItem;
 @RequestScoped
 public class MenusController {
 
-    private ServiceLocator locator;
+    private ComboLocator locator;
 
     private Menu menu;
     private List<Menu> menus;
@@ -38,11 +38,11 @@ public class MenusController {
     public void init(){
         menu = new Menu();
         menu.setMenuPadre(new Menu(1l));
-        locator = ServiceLocator.getInstance();
+        locator = ComboLocator.getInstance();
         GeneralController general = (GeneralController)FacesUtil.getManagedBean("#{generalController}");
         setMenus(menuServices.findAll(general.getLocale()));
-        setItems(FacesUtil.getSelectsItem(locator.getDataForCombo(ServiceLocator.COMB_ID_MENU)));
-        idiomas = FacesUtil.getSelectsItem(locator.getDataForCombo(ServiceLocator.COMB_ID_IDIOMA));
+        setItems(FacesUtil.getSelectsItem(locator.getDataForCombo(ComboLocator.COMB_ID_MENU)));
+        idiomas = FacesUtil.getSelectsItem(locator.getDataForCombo(ComboLocator.COMB_ID_IDIOMA));
     }
 
     public MenusController() {

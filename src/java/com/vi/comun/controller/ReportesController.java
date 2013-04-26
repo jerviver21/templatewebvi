@@ -3,8 +3,8 @@ package com.vi.comun.controller;
 import com.vi.usuarios.controller.SessionController;
 import com.vi.util.FacesUtil;
 import com.vi.comun.exceptions.ParametroException;
-import com.vi.comun.locator.ServiceLocator;
 import com.vi.comun.util.Log;
+import com.vi.locator.ComboLocator;
 import com.vi.reportes.dominio.ParametrosReporte;
 import com.vi.reportes.dominio.Reporte;
 import com.vi.reportes.dto.ResultReporteDTO;
@@ -75,14 +75,14 @@ public class ReportesController {
     private String rutaArchivo;
     private StreamedContent file;
     private boolean renderDownload = false;
-    ServiceLocator locator;
+    ComboLocator locator;
 
 
 
     @PostConstruct
     public void init(){
         SessionController sessionControler = (SessionController)FacesUtil.getManagedBean("#{sessionController}");
-        locator = ServiceLocator.getInstance();
+        locator = ComboLocator.getInstance();
         setReportes(FacesUtil.getSelectsItem(reporteService.getReportesByProcesoAndRol(proceso, sessionControler.getUsuario().getRolesUsr())));
     }
 
