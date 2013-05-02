@@ -1,5 +1,6 @@
 package com.vi.usuarios.controller;
 
+import com.vi.comun.services.CommonServicesLocal;
 import com.vi.util.FacesUtil;
 import com.vi.locator.ComboLocator;
 import com.vi.usuarios.dominio.Groups;
@@ -13,6 +14,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.primefaces.model.MenuModel;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,6 +30,8 @@ public class SessionController {
     private Users usuario;
     @EJB
     private UsuariosServicesLocal usersServices;
+    @EJB
+    private CommonServicesLocal commonService;
 
     private UsernamePasswordAuthenticationToken principal;
     private Collection<GrantedAuthority> grantedAuthorities;
@@ -39,10 +43,9 @@ public class SessionController {
     
     @PostConstruct
     public void init(){
-        System.out.println("Iniciando session");
+        System.out.println("Iniciando session....");
         locator = ComboLocator.getInstance();
         principal = (UsernamePasswordAuthenticationToken)FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
-
         grantedAuthorities = principal.getAuthorities();
         Set roles = new HashSet<String>();
         for(GrantedAuthority autoridad: grantedAuthorities){
@@ -57,6 +60,11 @@ public class SessionController {
         usuario.setRolesUsr(roles);
         usuario.setGruposUsr(grupos);
         restartModel();
+        
+        //Para el monitoreo en base de datos de usuarios autenticados
+        HttpSession sesion = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+        sesion.setAttribute("usr", principal.getName());
+        commonService.insertAudSesion(principal.getName(), "INICIO");
     }
     
 
