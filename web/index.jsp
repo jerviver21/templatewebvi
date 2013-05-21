@@ -52,7 +52,6 @@
                         <td><input name="button" type="button" value="Enviar" onclick="validarCatchap()"/> </td>
                     </tr>
                </table>
-                  <a href="registro/registro.xhtml">Regístrate</a>
                 </center>
                </form>
 
