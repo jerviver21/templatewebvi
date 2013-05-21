@@ -79,53 +79,38 @@ clear:both;
 
 body {
     font: 11px Verdana,Arial,sans-serif;
-    color: #666666;
+    color: #777777;
     background: url("../images/bg.gif") repeat scroll 0 0 transparent;
 }
 
 #top {
     height: 13%;
     position: relative;
-    background-image: url(../images/main_bg7.jpg);
+    background-image: url(../images/main_bg6.jpg);
     padding-top: 10px;
     padding-bottom: 5px;
-    float: left;
     width: 99%;
     margin: 0 auto;
 }
 
-#left_col {
-	width: 19%;
-        height: 77%;
-        margin: 0 auto;
-        background:#FFFFFF none repeat scroll 0%;
-        float: left;
-        position: relative;
-        padding-bottom: 25px;
-        
-}
-
-#right_col {
-	width: 80%;
+#contenido {
+	width: 99%;
         height: 71%;
         margin: 0 auto;
         background:#FFFFFF none repeat scroll 0%;
         padding-top: 25px;
-        float: right;
-        position: relative;
-        text-align: center;
         padding-bottom: 25px;
         overflow-y: scroll;
+        text-align: center;
 }
 
 #bottom{
     height: 16%;
     position: relative;
-    background-image: url(../images/main_bg7.jpg);
+    background-image: url(../images/main_bg6.jpg);
     text-align: center;
     padding-top: 5px;
     padding-bottom: 10px;
-    float: left;
     width: 100%;
     margin: 0 auto;
 }
@@ -145,5 +130,5 @@ clear:both;
     width: 1000px;
     height: 550px;
     margin: 0 auto;
-    background-image: url(../images/main_bg7.jpg);
+    background-image: url(../images/main_bg6.jpg);
 }

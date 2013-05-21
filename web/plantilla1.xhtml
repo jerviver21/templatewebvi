@@ -2,38 +2,50 @@
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:f="http://java.sun.com/jsf/core"
      xmlns:ui="http://java.sun.com/jsf/facelets"
-     xmlns:c="http://java.sun.com/jsp/jstl/core"
      xmlns:sec="http://www.springframework.org/security/facelets/tags"
      xmlns:p="http://primefaces.org/ui">
 
-    <h:head id="head1">
-        <title id="title">PAIDEIA Software Company</title>
-        <link id="link1" rel="stylesheet" type="text/css" href="#{labels.contexto}/styles/principal.css"/>
-        <f:view id="view1" locale="#{generalController.locale}" />
-
+    <h:head>
+        <title id="title">Paideia Software</title>
+        <link href="#{labels.contexto}/styles/principal1.css" rel="stylesheet" type="text/css" />
+        <!--<script type="text/javascript">
+            //Funcion para componentes de arrastrar y soltar
+            function handleDrop(event, ui) {
+                var data = ui.draggable;
+                data.fadeOut('fast');
+            }
+        </script>-->
+        <f:view id="view1" locale="{generalController.locale}" />
      </h:head>
-     <h:body id="body1">
-        <div class="column_detail one" id="main-content" role="main">
-            <div class="portlet-layout">
-            
-            <nav class="site-breadcrumbs" id="breadcrumbs">
-                <ui:insert id="nav" name="navegador"></ui:insert>
-            </nav>
-            <div class="banner">
-                <sec:ifAnyGranted roles="ROLE_USER, MASTER">
-                    <a id="ref1" href="#{labels.contexto}/j_spring_security_logout">Cerrar Sesión</a>
-                </sec:ifAnyGranted>
-            </div>
-            <div class="portlet-layout">
-                <div class="portlet-column portlet-column-only" id="column-1">
-                    <ui:insert id="cont" name="contenido"></ui:insert>
-                </div>
-            </div>
-            <div class="texture left"></div>
-            <div class="texture right"></div>
+    <h:body>
+        <div id="holder">																																																																																																																																																																																																																																																																											
+           <div id="top">
+               <div id="name_part_1" >#{labels.p_nombre} <span class="orange">#{labels.sn_pletra}</span>#{labels.s_nombre}</div>
+               <div id="name_part_2" ><span class="green">S</span>YSTEM</div>	
+               <div style="text-align: right">
+                 <!--<p:graphicImage value="images/logo1.png" />-->
+                 <sec:ifAnyGranted roles="ROLE_USER, MASTER">
+                   <a id="ref1" href="#{labels.contexto}/j_spring_security_logout">Cerrar Sesion</a>
+                 </sec:ifAnyGranted>  
+               </div>
            </div>
-        </div>
-        
+           <div id="left_col">
+               <div class="clearboth"></div>												
+               <!-- Menu -->
+               <ui:insert id="nav" name="navegador"></ui:insert>
+               <!-- Menu end-->				
+           </div>
+           <!--Contenido-->
+           <div id="right_col">											
+               <ui:insert id="cont" name="contenido"></ui:insert>										
+           </div>
+           <!--End contenido-->
+           <!--Pie -->
+           <div id="bottom">											
+                <ui:insert id="nav" name="pie"></ui:insert>
+           </div>
+           <!--End Pie-->
+       </div>
     </h:body>
 </html>
 

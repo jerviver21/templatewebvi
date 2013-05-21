@@ -25,8 +25,8 @@ public class ApplicationController {
     //Define la plantilla y layout de la aplicacion
     private String p1 = "../plantilla1.xhtml";
     private String p2 = "../plantilla2.xhtml";
-    private String p3 = "../plantilla3.xhtml";
-    private String plantilla = "../plantilla2.xhtml";
+    private String plantilla = p1;
+    private String plantillaIndex = p1;
     private Map<String, String> themes; 
     private String theme = "casablanca";
     
@@ -79,9 +79,6 @@ public class ApplicationController {
         return plantilla;
     }
     
-    public String getPlantillaIndex() {
-        return plantilla.replace("../", "");
-    }
 
     /**
      * @param plantilla the plantilla to set
@@ -118,19 +115,7 @@ public class ApplicationController {
         this.p2 = p2;
     }
 
-    /**
-     * @return the p3
-     */
-    public String getP3() {
-        return p3;
-    }
 
-    /**
-     * @param p3 the p3 to set
-     */
-    public void setP3(String p3) {
-        this.p3 = p3;
-    }
 
 
     /**
@@ -159,6 +144,17 @@ public class ApplicationController {
      */
     public void setTheme(String theme) {
         this.theme = theme;
+    }
+
+    /**
+     * @param plantillaIndex the plantillaIndex to set
+     */
+    public void setPlantillaIndex(String plantillaIndex) {
+        this.plantillaIndex = plantillaIndex;
+    }
+    
+    public String getPlantillaIndex() {
+        return plantilla.replaceAll("(.*plantilla)(\\d.xhtml)", "$1I$2");
     }
 
 }
