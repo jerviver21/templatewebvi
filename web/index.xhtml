@@ -3,40 +3,36 @@
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:p="http://primefaces.org/ui"
      xmlns:f="http://java.sun.com/jsf/core"
-     xmlns:ui="http://java.sun.com/jsf/facelets"
-     xmlns:sec="http://www.springframework.org/security/facelets/tags">
+     xmlns:ui="http://java.sun.com/jsf/facelets">
 <f:view>
-    <ui:composition template="#{applicationController.plantillaIndex}">
-    <ui:define name="navegador">
-        <h:form id="loginForm" prependId="false">
-        <!-- Agregue la implementación del navegador-->
-        <p:messages/>
-        <h:outputLabel value="#{loginController.mensaje}" style="color: red"  />
-        <table>
-             <tr>
-                 <td><h:outputLabel value="#{labels.usr}"/></td>
-             </tr>
-             <tr>
-                 <td><h:inputText id="j_username"  size="35"/></td>
-             </tr>
-             <tr>
-                <td><h:outputLabel value="#{labels.pwd}"/></td>
-             </tr>
-             <tr>
-                 <td><h:inputSecret id="j_password" size="35"/></td>
-             </tr>
-            <tr>
-                 <td></td>
-             </tr>
-             <tr>
-                 <td><h:commandButton type="submit" id="login" action="#{loginController.doLogin}" value="#{labels.boton_enviar}"/></td>
-             </tr>
-        </table>
-        </h:form>
-    </ui:define>
+    <ui:composition template="#{applicationController.plantillaIndex.substring(3)}">
     <ui:define name="contenido">
-        
-    </ui:define>
+        <h:form id="form0" prependId="false">
+            <p:growl id="msgs"/>
+            <h:outputLabel id="error_msg" value="#{loginController.mensaje} " style="color: red"  />
+            <br/>
+            <span class="titulo">Login:</span>
+            <p:panelGrid columns="3">
+                <p:outputLabel  value="E-mail: "/>
+                <p:inputText id="j_username"  size="30"/>
+                <p:watermark value="Digite su e-mail" for="j_username"/>
+                
+                <p:outputLabel  value="Clave: "/>
+                <p:password id="j_password" size="30" feedback="false"/>
+                <p:watermark value="Digite su clave" for="j_password"/>
+                
+                <f:facet name="footer">
+                    <p:commandButton type="submit" id="login" action="#{loginController.doLogin}" value="#{labels.boton_enviar}" ajax="false"/>
+                </f:facet>
+            </p:panelGrid>
+
+        </h:form>
+
+
+        </ui:define>
+        <ui:define name="pie">
+            <ui:include src="piepag.xhtml"/>
+        </ui:define>
   </ui:composition>
 </f:view>
 </html>

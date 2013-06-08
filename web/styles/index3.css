@@ -85,14 +85,14 @@ clear:both;
 
 body {
     font: 11px Verdana,Arial,sans-serif;
-    color: #777777;
+    color: #666666;
     background: url("../images/bg.gif") repeat scroll 0 0 transparent;
 }
 
 #top {
-    height:13%;
+    height: 13%;
     position: relative;
-    background-image: url(../images/main_bg6.jpg);
+    background-image: url(../images/bgheader1.png);
     padding-top: 10px;
     padding-bottom: 5px;
     width: 99%;
@@ -104,8 +104,8 @@ body {
         height: 60%;
         margin: 0 auto;
         background:#FFFFFF none repeat scroll 0%;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 25px;
+        padding-bottom: 25px;
         overflow-y: scroll;
         text-align: center;
 }
@@ -113,7 +113,7 @@ body {
 #bottom{
     height: 20%;
     position: relative;
-    background-image: url(../images/main_bg6.jpg);
+    background-image: url(../images/bgheader1.png);
     text-align: center;
     padding-top: 5px;
     padding-bottom: 10px;
@@ -136,5 +136,5 @@ clear:both;
     width: 1000px;
     height: 600px;
     margin: 0 auto;
-    background-image: url(../images/main_bg6.jpg);
+    background-image: url(../images/bgheader1.png);
 }

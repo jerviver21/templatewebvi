@@ -84,7 +84,7 @@ body {
 }
 
 #top {
-    height: 13%;
+    height: 12%;
     position: relative;
     background-image: url(../images/main_bg7.jpg);
     padding-top: 10px;
@@ -96,7 +96,7 @@ body {
 
 #left_col {
 	width: 19%;
-        height: 77%;
+        height: 75%;
         margin: 0 auto;
         background:#FFFFFF none repeat scroll 0%;
         float: left;
@@ -107,7 +107,7 @@ body {
 
 #right_col {
 	width: 80%;
-        height: 71%;
+        height: 75%;
         margin: 0 auto;
         background:#FFFFFF none repeat scroll 0%;
         padding-top: 25px;
@@ -119,14 +119,14 @@ body {
 }
 
 #bottom{
-    height: 16%;
+    height: 13%;
     position: relative;
     background-image: url(../images/main_bg7.jpg);
     text-align: center;
     padding-top: 5px;
     padding-bottom: 10px;
     float: left;
-    width: 100%;
+    width: 99.5%;
     margin: 0 auto;
 }
 
@@ -143,7 +143,7 @@ clear:both;
 
 #holder { 
     width: 1000px;
-    height: 550px;
+    height: 640px;
     margin: 0 auto;
     background-image: url(../images/main_bg7.jpg);
 }

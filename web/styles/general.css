@@ -1,3 +1,6 @@
+
+
+
 .index_cont{
     text-align: center;
     vertical-align: central;
@@ -19,6 +22,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 	clear: both;
+        margin: 0 auto;
 }
 
 fieldset, img {

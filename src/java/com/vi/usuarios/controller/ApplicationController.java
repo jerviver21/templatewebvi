@@ -23,12 +23,15 @@ public class ApplicationController {
     private String ROL_MASTER;
     
     //Define la plantilla y layout de la aplicacion
+
     private String p1 = "../plantilla1.xhtml";
     private String p2 = "../plantilla2.xhtml";
-    private String plantilla = p1;
-    private String plantillaIndex = p1;
+    private String p3 = "../plantilla3.xhtml";
+    private String plantilla = p3;
+    private String plantillaIndex = p3;
     private Map<String, String> themes; 
-    private String theme = "casablanca";
+    private String theme = "bluesky";
+    private String url;
     
 
     @EJB
@@ -38,8 +41,12 @@ public class ApplicationController {
     @PostConstruct
     public void init(){
         locator = ParameterLocator.getInstance();
-        System.out.println("--> Iniciando application controller <--");
+        System.out.println("Iniciando la aplicación MH System...");
         commonServices.updateEstructuraMenus();
+        System.out.println("Menus actualizados...");
+        //licenciaServices.initTimer();
+        //System.out.println("Timer iniciado...");
+        url = locator.getParameter("url");
 
         ROL_MASTER = locator.getParameter("rolMaster");
         
@@ -48,6 +55,11 @@ public class ApplicationController {
         themes.put("Casablanca", "casablanca");  
         themes.put("South-Street", "south-street");  
         themes.put("UI-Lightness", "ui-lightness");  
+        themes.put("Blue-Sky", "bluesky"); 
+        themes.put("Afternoon", "afternoon"); 
+        themes.put("Cupertino", "cupertino"); 
+        themes.put("Redmond", "redmond"); 
+        themes.put("Glass-X", "glass-x"); 
     }
     
     
@@ -78,6 +90,7 @@ public class ApplicationController {
     public String getPlantilla() {
         return plantilla;
     }
+    
     
 
     /**
@@ -114,7 +127,6 @@ public class ApplicationController {
     public void setP2(String p2) {
         this.p2 = p2;
     }
-
 
 
 
@@ -155,6 +167,20 @@ public class ApplicationController {
     
     public String getPlantillaIndex() {
         return plantilla.replaceAll("(.*plantilla)(\\d.xhtml)", "$1I$2");
+    }
+
+    /**
+     * @return the url
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * @param url the url to set
+     */
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 }

@@ -17,6 +17,11 @@ text-decoration :none;
 .green {
 	color:#8f9d4c;
 }
+.titulo{
+    color: #8f9d4c;
+    font: 22px Arial,Helvetica,sans-serif;
+    text-align: center;
+}
 
 #square {	
 	position:absolute;
@@ -95,7 +100,7 @@ body {
 
 #contenido {
 	width: 99%;
-        height: 71%;
+        height: 60%;
         margin: 0 auto;
         background:#FFFFFF none repeat scroll 0%;
         padding-top: 25px;
@@ -105,13 +110,13 @@ body {
 }
 
 #bottom{
-    height: 16%;
+    height: 20%;
     position: relative;
     background-image: url(../images/main_bg7.jpg);
     text-align: center;
     padding-top: 5px;
     padding-bottom: 10px;
-    width: 100%;
+    width: 99%;
     margin: 0 auto;
 }
 
@@ -128,7 +133,7 @@ clear:both;
 
 #holder { 
     width: 1000px;
-    height: 550px;
+    height: 600px;
     margin: 0 auto;
     background-image: url(../images/main_bg7.jpg);
 }
