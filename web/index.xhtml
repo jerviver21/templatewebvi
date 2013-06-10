@@ -10,6 +10,7 @@
         <h:form id="form0" prependId="false">
             <p:growl id="msgs"/>
             <h:outputLabel id="error_msg" value="#{loginController.mensaje} " style="color: red"  />
+            <h:link value="#{loginController.link}" outcome="#{loginController.urlLicencia}" rendered="#{loginController.urlLicencia ne null}"/>
             <br/>
             <span class="titulo">Login:</span>
             <p:panelGrid columns="3">

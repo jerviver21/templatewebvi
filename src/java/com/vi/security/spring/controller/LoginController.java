@@ -25,9 +25,15 @@ import org.springframework.security.web.WebAttributes;
 //public class LoginController implements PhaseListener {
 public class LoginController{
     private String mensaje;
+    private String urlLicencia = null;
+    private String link;
+    
+    
     public LoginController(){
         Object ex = FacesContext.getCurrentInstance().getExternalContext()
                 .getSessionMap().get(WebAttributes.AUTHENTICATION_EXCEPTION);
+        String usrname = (String)FacesContext.getCurrentInstance().getExternalContext()
+                .getSessionMap().get(WebAttributes.LAST_USERNAME);
         if(ex != null){
             if(ex instanceof BadCredentialsException){
                 GeneralController generalControler = (GeneralController)FacesUtil.getManagedBean("#{generalController}");
@@ -41,12 +47,16 @@ public class LoginController{
                 }
             }else if(ex instanceof DisabledException){
                 mensaje =  "El usuario se encuentra inactivo";
+                urlLicencia = "/registro/activacion.xhtml";
+                link = "Activar"; 
             }else{
                 Exception exc = (Exception) ex;
                 mensaje =  "Error al tratar de autenticar "+ex.toString();
                 exc.printStackTrace();
             }
         }
+        FacesContext.getCurrentInstance().getExternalContext()
+                .getSessionMap().remove(WebAttributes.AUTHENTICATION_EXCEPTION);
     }
 
     public String doLogin() throws ServletException, IOException{
@@ -77,6 +87,34 @@ public class LoginController{
      */
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
+    }
+
+    /**
+     * @return the urlLicencia
+     */
+    public String getUrlLicencia() {
+        return urlLicencia;
+    }
+
+    /**
+     * @param urlLicencia the urlLicencia to set
+     */
+    public void setUrlLicencia(String urlLicencia) {
+        this.urlLicencia = urlLicencia;
+    }
+
+    /**
+     * @return the link
+     */
+    public String getLink() {
+        return link;
+    }
+
+    /**
+     * @param link the link to set
+     */
+    public void setLink(String link) {
+        this.link = link;
     }
 
 }
