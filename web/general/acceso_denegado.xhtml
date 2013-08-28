@@ -5,9 +5,11 @@
      xmlns:f="http://java.sun.com/jsf/core"
      xmlns:ui="http://java.sun.com/jsf/facelets">
 <f:view>
-  <ui:composition template="#{applicationController.plantilla}">
+  <ui:composition template="../#{applicationController.plan1}">
     <ui:define name="contenido">
+        <div style="height: 450px">
         <h:outputLabel value="#{labels.acceso_denegado}" style="color: red"  />
+        </div>
   </ui:define>
   </ui:composition>
 </f:view>

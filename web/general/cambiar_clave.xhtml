@@ -5,11 +5,10 @@
      xmlns:f="http://java.sun.com/jsf/core"
      xmlns:ui="http://java.sun.com/jsf/facelets">
 <f:view>
-  <ui:composition template="#{applicationController.plantilla}">
-    <ui:define name="navegador">
-        <ui:include src="../menu.xhtml"/>
-    </ui:define>
+  <ui:composition template="../#{applicationController.plan3}">
+
     <ui:define name="contenido">
+        <div style="height: 450px">
         <h:form id="form">
             <p:messages/>
             <h:panelGrid columns="2">
@@ -22,6 +21,7 @@
                 <p:commandButton value="#{labels.boton_enviar}" action="#{changePassController.changePassword}" update="@form"/>
             </h:panelGrid>
         </h:form>
+        </div>
    </ui:define>
   </ui:composition>
 </f:view>

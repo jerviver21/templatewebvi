@@ -5,13 +5,12 @@
      xmlns:f="http://java.sun.com/jsf/core"
      xmlns:ui="http://java.sun.com/jsf/facelets">
 <f:view>
-  <ui:composition template="#{applicationController.plantilla}">
-    <ui:define name="navegador">
-        <ui:include src="../menu.xhtml"/>
-    </ui:define>
+  <ui:composition template="../#{applicationController.plan3}">
     <ui:define name="contenido">
+        <div style="height: 450px">
        Bienvenido al sistema.
        <br/>Un producto de PAIDEIA Software Company.
+       </div>
    </ui:define>
   </ui:composition>
 </f:view>

@@ -6,9 +6,10 @@
      xmlns:f="http://java.sun.com/jsf/core"
      xmlns:ui="http://java.sun.com/jsf/facelets">
 <f:view>
-    <ui:composition template="#{applicationController.plantillaIndex}">
+    <ui:composition template="../#{applicationController.plan1}">
     
     <ui:define name="contenido">
+        <div style="height: 450px">
         <h:form id="form1">
             <p:messages id="msgs1"/>
             <h:link value="Login" outcome="/index.xhtml" rendered="#{registroController.linkIngreso}"/>
@@ -30,6 +31,21 @@
                     <p:message id="m_nombre" for="nombre"/>
                     </p:column>
                     <p:column><p:watermark for="nombre" value="Nombres y Apellidos"/></p:column>  
+                    </p:row>
+                
+                    <p:row>
+                        <p:column>
+                        <p:outputLabel id="l_numid" value="Clave *"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="numid" size="22"  value="#{registroController.usuarioRegistrar.numId}">
+                                <f:validateRegex pattern="[\d]+"/>
+                            </p:inputText>
+                        </p:column>
+                        <p:column>
+                        <p:message id="m_numid" for="numid"/>
+                        </p:column>
+                        <p:column><p:watermark for="numid" value="D.N.I."/></p:column>
                     </p:row>
                     
                     
@@ -63,6 +79,8 @@
                     </p:column>
                     <p:column><p:watermark for="pwd1" value="Clave secreta"/></p:column>
                     </p:row>
+                
+                    
                     
                     <p:row>
                     <p:column colspan="4">
@@ -81,10 +99,9 @@
             
             
         </h:form>
+        </div>
     </ui:define>
-    <ui:define name="pie">
-        <ui:include src="../piepag.xhtml"/>
-    </ui:define>
+
   </ui:composition>
 </f:view>
 </html>
