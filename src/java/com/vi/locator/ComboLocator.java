@@ -1,12 +1,9 @@
 package com.vi.locator;
 
-import com.vi.comun.locator.ParameterLocator;
 import com.vi.comun.services.CommonServicesLocal;
-import com.vi.comun.util.Utils;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import javax.naming.InitialContext;
 
 /**
  * @author jerviver21
@@ -29,8 +26,8 @@ public class ComboLocator {
     
     private ComboLocator()throws Exception{
         try {
-            InitialContext contexto = new InitialContext();
-            commonFacade = (CommonServicesLocal)contexto.lookup(Utils.getPropiedad("jndi_common"));
+            /*InitialContext contexto = new InitialContext();
+            commonFacade = (CommonServicesLocal)contexto.lookup(Utils.getPropiedad("jndi_common"));*/
             cache = Collections.synchronizedMap(new HashMap());
         } catch (Exception e) {
             System.err.println(e);
@@ -48,6 +45,10 @@ public class ComboLocator {
             }
         }
         return instance;
+    }
+    
+    public void setCommonFacade(CommonServicesLocal servicio){
+        commonFacade = servicio;
     }
     
 

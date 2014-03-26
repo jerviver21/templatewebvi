@@ -3,6 +3,7 @@ package com.vi.usuarios.controller;
 
 import com.vi.comun.locator.ParameterLocator;
 import com.vi.comun.services.CommonServicesLocal;
+import com.vi.locator.ComboLocator;
 import com.vi.util.FacesUtil;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +22,8 @@ import javax.faces.model.SelectItem;
 @ManagedBean(name="applicationController" ,eager=true)
 @ApplicationScoped
 public class ApplicationController {
-    ParameterLocator locator;
+    ParameterLocator paramLocator;
+    ComboLocator comboLocator;
     
     //Roles que condicionan los componentes de la vista
     private String ROL_MASTER;
@@ -54,15 +56,18 @@ public class ApplicationController {
 
     @PostConstruct
     public void init(){
-        locator = ParameterLocator.getInstance();
-        System.out.println("Iniciando la aplicación MH System...");
+        System.out.println("Iniciando la aplicación...");
+        paramLocator = ParameterLocator.getInstance();
+        comboLocator = ComboLocator.getInstance();
+        paramLocator.setCommonFacade(commonServices);
+        comboLocator.setCommonFacade(commonServices);
+        
+        
         commonServices.updateEstructuraMenus();
-        System.out.println("Menus actualizados...");
         //clasificadoTimer.initTimer();
         //System.out.println("Timer iniciado...");
-        url = locator.getParameter("url");
-
-        ROL_MASTER = locator.getParameter("rolMaster");
+        url = paramLocator.getParameter("url");
+        ROL_MASTER = paramLocator.getParameter("rolMaster");
         
         themes = new TreeMap<String, String>();  
         themes.put("Afterdark", "afterdark");  
@@ -74,7 +79,6 @@ public class ApplicationController {
         themes.put("Cupertino", "cupertino"); 
         themes.put("Redmond", "redmond"); 
         themes.put("Glass-X", "glass-x"); 
-        
         
         Map mPlans = new HashMap();
         mPlans.put("plantillaA1.xhtml", "Plantilla A1");
