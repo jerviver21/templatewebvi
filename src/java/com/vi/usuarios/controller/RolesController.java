@@ -6,6 +6,7 @@ import com.vi.comun.exceptions.LlaveDuplicadaException;
 import com.vi.comun.util.Log;
 import com.vi.usuarios.dominio.Resource;
 import com.vi.usuarios.dominio.Rol;
+import com.vi.usuarios.dominio.Users;
 import com.vi.usuarios.services.ResourcesServicesLocal;
 import com.vi.usuarios.services.RolesServicesLocal;
 import java.util.HashSet;
@@ -29,6 +30,8 @@ public class RolesController {
     private List<Resource> recursos;
     private int gridFilasRec = 1;
     private int gridColumnasRec = 1;
+    
+    Users sesion;
 
     @EJB
     private RolesServicesLocal rolService;
@@ -38,8 +41,10 @@ public class RolesController {
 
     @PostConstruct
     public void init(){
+        sesion = ((SessionController)FacesUtil.getManagedBean("#{sessionController}")).getUsuario();
+        
         rol = new Rol();
-        setRoles(rolService.findAll());
+        setRoles(rolService.findByLicencia(sesion.getLicencia()));
         GeneralController generalController = (GeneralController)FacesUtil.getManagedBean("#{generalController}");
         setRecursos(resourceService.findAll(generalController.getLocale()));
         if(!getRecursos().isEmpty()){

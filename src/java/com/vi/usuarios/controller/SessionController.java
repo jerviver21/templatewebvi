@@ -15,7 +15,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import org.primefaces.model.MenuModel;
+import org.primefaces.model.menu.MenuModel;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -30,6 +30,7 @@ public class SessionController {
     private Users usuario;
     @EJB
     private UsuariosServicesLocal usersServices;
+    
     @EJB
     private CommonServicesLocal commonService;
 
@@ -43,9 +44,10 @@ public class SessionController {
     
     @PostConstruct
     public void init(){
-        System.out.println("Iniciando session....");
+        System.out.println("Iniciando session");
         locator = ComboLocator.getInstance();
         principal = (UsernamePasswordAuthenticationToken)FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+
         grantedAuthorities = principal.getAuthorities();
         Set roles = new HashSet<String>();
         for(GrantedAuthority autoridad: grantedAuthorities){

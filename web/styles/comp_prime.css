@@ -1,3 +1,12 @@
+.rojo {
+    background-color: #cb7373 !important;
+    color: #000000 !important;
+}
+
+.amarillo {
+    background-color: #ded871 !important;
+    color: #000000 !important;
+}
 
 
 .ui-datatable table {
